@@ -27,4 +27,9 @@ public class CodeController {
     public Code getCode(@PathVariable String id) {
         return codeService.getCode(id);
     }
+
+    @GetMapping("/code/new")
+    public String sendCode() {
+        return "new_code";
+    }
 }
