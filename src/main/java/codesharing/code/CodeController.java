@@ -1,4 +1,4 @@
-package codesharing.Code;
+package codesharing.code;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package codesharing.Code;
+package codesharing.code;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

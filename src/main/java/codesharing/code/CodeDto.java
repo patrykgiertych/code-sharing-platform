@@ -1,4 +1,4 @@
-package codesharing.Code;
+package codesharing.code;
 
 
 public class CodeDto {
