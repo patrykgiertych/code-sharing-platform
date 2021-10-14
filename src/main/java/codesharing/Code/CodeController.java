@@ -3,6 +3,7 @@ package codesharing.Code;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -31,5 +32,11 @@ public class CodeController {
     @GetMapping("/code/new")
     public String sendCode() {
         return "new_code";
+    }
+
+    @GetMapping("/code/{id}")
+    public String getCodeInHtml(@PathVariable String id, Model model) {
+        model.addAttribute("snippet", codeService.getCode(id));
+        return "view_snippet";
     }
 }

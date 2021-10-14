@@ -17,8 +17,8 @@ public class Code {
     @Id
     private String id;
     private String code;
-    //@Column(name = "last_edit")
     private String date;
+//    private boolean isPublic;
 //    private User author;
 //    private List<User> userList;   list of users allowed to see and edit the snippet, will be implemented later
 
