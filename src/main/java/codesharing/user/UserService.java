@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -22,5 +24,9 @@ public class UserService {
 
     public void register(User user) {
         userRepository.save(user);
+    }
+
+    public List<User> getAllUsers() {
+        return userRepository.getAllUsers();
     }
 }

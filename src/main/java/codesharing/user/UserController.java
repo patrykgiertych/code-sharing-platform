@@ -22,14 +22,6 @@ public class UserController {
         this.userService = userService;
     }
 
-
-
-    @GetMapping("/test/api/users")
-    @ResponseBody
-    public List<User> getUsers() {
-        return USERLIST;
-    }
-
     @GetMapping("/api/user/{id}")
     @ResponseBody
     public User getUser(@PathVariable Long id) {
@@ -41,5 +33,11 @@ public class UserController {
     public User register(@RequestBody User user) {
         userService.register(user);
         return user;
+    }
+
+    @GetMapping("/admin/api/users")
+    @ResponseBody
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
     }
 }
