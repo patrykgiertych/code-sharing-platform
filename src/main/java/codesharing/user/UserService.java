@@ -1,15 +1,14 @@
 package codesharing.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import java.util.List;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
@@ -19,14 +18,29 @@ public class UserService {
     }
 
     public User getUser(Long id) {
-        return userRepository.findUserById(id);
+        if (userRepository.existsById(id)) {
+            return userRepository.findUserById(id);
+        }
+        return null;
     }
 
-    public void register(User user) {
-        userRepository.save(user);
+    public User getUser(String username) {
+        if (userRepository.findUserByUsernameOptional(username).isPresent()) {
+            return userRepository.findUserByUsername(username);
+        }
+        return null;
     }
 
     public List<User> getAllUsers() {
         return userRepository.getAllUsers();
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        return userRepository.findUserByUsername(s);
+    }
+
+    public void register(User user) {
+        userRepository.save(user);
     }
 }

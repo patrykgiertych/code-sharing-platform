@@ -1,6 +1,6 @@
-package codesharing.security;
+package codesharing.user;
 
-public enum AppUserPermission {
+public enum UserPermission {
     USER_ADD("user:add"),
     USER_READ("user:read"),
     USER_EDIT("user:edit"),
@@ -12,7 +12,7 @@ public enum AppUserPermission {
 
     private final String permission;
 
-    AppUserPermission(String permission) {
+    UserPermission(String permission) {
         this.permission = permission;
     }
 

@@ -1,28 +1,27 @@
-package codesharing.security;
+package codesharing.user;
 
 
 import com.google.common.collect.Sets;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static codesharing.security.AppUserPermission.*;
+import static codesharing.user.UserPermission.*;
 
 
-public enum AppUserRole {
-    USER(Sets.newHashSet()),
+public enum UserRole {
+    USER(Sets.newHashSet(SNIPPET_ADD, SNIPPET_READ, SNIPPET_EDIT, SNIPPET_DELETE)),
     ADMIN(Sets.newHashSet(USER_ADD, USER_READ, USER_EDIT, USER_DELETE,
-            SNIPPET_ADD, SNIPPET_READ, SNIPPET_EDIT, SNIPPET_DELETE));
+             SNIPPET_READ, SNIPPET_EDIT, SNIPPET_DELETE));
 
-    private final Set<AppUserPermission> permissions;
+    private final Set<UserPermission> permissions;
 
-    AppUserRole(Set<AppUserPermission> permissions) {
+    UserRole(Set<UserPermission> permissions) {
         this.permissions = permissions;
     }
 
-    public Set<AppUserPermission> getPermissions() {
+    public Set<UserPermission> getPermissions() {
         return permissions;
     }
 
