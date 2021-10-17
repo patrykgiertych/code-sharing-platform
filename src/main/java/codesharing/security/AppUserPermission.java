@@ -4,9 +4,11 @@ public enum AppUserPermission {
     USER_ADD("user:add"),
     USER_READ("user:read"),
     USER_EDIT("user:edit"),
+    USER_DELETE("user:delete"),
     SNIPPET_ADD("snippet:add"),
     SNIPPET_READ("snippet:read"),
-    SNIPPET_EDIT("snippet:edit");
+    SNIPPET_EDIT("snippet:edit"),
+    SNIPPET_DELETE("snippet:delete");
 
     private final String permission;
 

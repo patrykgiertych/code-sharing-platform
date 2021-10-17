@@ -19,13 +19,13 @@ public class User {
             generator = "user_sequence"
     )
     private Long id;
-    private String login;
+    private String username;
     private String password;
 
     public User() {}
 
-    public User(String login, String password) {
-        this.login = login;
+    public User(String username, String password) {
+        this.username = username;
         this.password = password;
     }
 
@@ -33,8 +33,8 @@ public class User {
         return id;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
     public String getPassword() {
