@@ -1,46 +1,35 @@
 package codesharing.user;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
-
-    @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    public User getUser(Long id) {
-        if (userRepository.existsById(id)) {
-            return userRepository.findUserById(id);
-        }
-        return null;
-    }
-
-    public User getUser(String username) {
-        if (userRepository.findUserByUsernameOptional(username).isPresent()) {
-            return userRepository.findUserByUsername(username);
-        }
-        return null;
-    }
-
-    public List<User> getAllUsers() {
-        return userRepository.getAllUsers();
-    }
+    private final BCryptPasswordEncoder passwordEncoder;
 
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return userRepository.findUserByUsername(s);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
-    public void register(User user) {
+    public String signUpUser(User user) {
+        boolean userExists = userRepository.findByUsername(user.getUsername())
+                .isPresent();
+        if (userExists) {
+            throw new IllegalStateException("already taken");
+        }
+
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
         userRepository.save(user);
+        return "signUpUser works";
     }
 }

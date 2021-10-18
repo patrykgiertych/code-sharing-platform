@@ -1,6 +1,10 @@
 package codesharing.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,6 +18,10 @@ import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Table(name = "users")
+@Getter
+@Setter
+@EqualsAndHashCode
+@NoArgsConstructor
 public class User implements UserDetails {
 
     @Id
@@ -29,35 +37,17 @@ public class User implements UserDetails {
     private Long id;
     private String username;
     private String password;
-    @Transient
+    @Enumerated(EnumType.STRING)
     private UserRole userRole;
     @Transient
     private boolean locked;
-    @Transient
-    private boolean enabled;
+    private boolean enabled = true;
 
-    public User() {}
 
     public User(String username, String password, UserRole userRole) {
         this.username = username;
         this.password = password;
         this.userRole = userRole;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public UserRole getUserRole() {
-        return userRole;
     }
 
     @Override @JsonIgnore

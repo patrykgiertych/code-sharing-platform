@@ -1,20 +1,17 @@
 package codesharing.code;
 
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@AllArgsConstructor
 public class CodeController {
 
     private final CodeService codeService;
-
-    @Autowired
-    public CodeController(CodeService codeService) {
-        this.codeService = codeService;
-    }
 
     @PostMapping("/api/code/new")
     @ResponseBody

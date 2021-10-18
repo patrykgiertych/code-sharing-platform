@@ -1,5 +1,9 @@
 package codesharing.code;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -9,6 +13,9 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "snippets")
+@NoArgsConstructor
+@Getter
+@Setter
 public class Code {
 
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
@@ -21,8 +28,6 @@ public class Code {
 //    private User author;
 //    private List<User> userList;   list of users allowed to see and edit the snippet, will be implemented later
 
-    public Code() {}
-
     public Code(CodeDto code) {
         UUID uuid = UUID.randomUUID();
         this.id = uuid.toString();
@@ -30,19 +35,4 @@ public class Code {
         this.date = LocalDateTime.now().format(formatter);
     }
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getDate() {
-        return date;
-    }
 }

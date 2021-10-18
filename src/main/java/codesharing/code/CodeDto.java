@@ -1,18 +1,14 @@
 package codesharing.code;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class CodeDto {
-
     private String code;
-
-    public CodeDto(String code) {
-        this.code = code;
-    }
-
-    public CodeDto() {
-    }
-
-    public String getCode() {
-        return code;
-    }
 }

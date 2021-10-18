@@ -3,32 +3,29 @@ package codesharing.registration;
 import codesharing.user.User;
 import codesharing.user.UserRole;
 import codesharing.user.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class RegistrationService {
 
     private final UserService userService;
+    private final UserValidator userValidator;
 
-    @Autowired
-    public RegistrationService(UserService userService) {
-        this.userService = userService;
-    }
 
-    public User register(RegistrationRequest request) {
-        if (userService.getUser(request.getUsername()) != null) {
-            return null;
+    public String register(RegistrationRequest request) {
+        boolean isValid = userValidator.test(request.getUsername());
+        if (!isValid) {
+            throw new IllegalStateException("not valid");
         }
-
-        User user = new User(
-                request.getUsername(),
-                request.getPassword(),
-                UserRole.USER
+        return userService.signUpUser(
+                new User(
+                        request.getUsername(),
+                        request.getPassword(),
+                        UserRole.USER
+                )
         );
-
-        userService.register(user);
-
-        return user;
     }
 }
