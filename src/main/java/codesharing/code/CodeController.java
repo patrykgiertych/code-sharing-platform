@@ -26,14 +26,4 @@ public class CodeController {
         return codeService.getCode(id);
     }
 
-    @GetMapping("/code/new")
-    public String sendCode() {
-        return "new_code";
-    }
-
-    @GetMapping("/code/{id}")
-    public String getCodeInHtml(@PathVariable String id, Model model) {
-        model.addAttribute("snippet", codeService.getCode(id));
-        return "view_snippet";
-    }
 }

@@ -20,9 +20,4 @@ public class RegistrationController {
         return registrationService.register(request);
     }
 
-    @GetMapping("/register")
-    public String registerHTML() {
-        return "register";
-    }
-
 }
