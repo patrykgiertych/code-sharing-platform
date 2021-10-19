@@ -1,12 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
+    <link th:href="@{/css/index.css}" rel="stylesheet" />
 </head>
 <body>
-<h1>Welcome to the Code Sharing Platform!</h1>
-<a href="login">Login</a>
-<a href="register">Create new account</a>
+<div class="container">
+    <header class="welcome-header">
+        <h1 class="welcome-text">Welcome to the Code Sharing Platform!</h1>
+    </header>
+    <div class="option-area">
+        <div class="form1">
+            <form action="login.html" class="form-area1">
+                <button type="submit" class="button login">Login</button>
+            </form>
+        </div>
+        <div class="form2">
+            <form action="register.html" class="form-area2">
+                <button type="submit" class="button register">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>
