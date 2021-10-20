@@ -22,7 +22,7 @@ public class CodeController {
 
     @GetMapping("/api/code/{id}")
     @ResponseBody
-    public Code getCode(@PathVariable String id) {
+    public Code getCode(@PathVariable Long id) {
         return codeService.getCode(id);
     }
 

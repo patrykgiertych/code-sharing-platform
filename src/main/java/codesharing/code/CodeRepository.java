@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface CodeRepository extends CrudRepository<Code, String> {
 
     @Query("select c from Code c where c.id = ?1")
-    Code findCodeById(String id);
+    Code findCodeById(Long id);
 }

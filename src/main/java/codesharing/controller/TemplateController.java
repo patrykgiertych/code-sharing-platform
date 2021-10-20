@@ -1,5 +1,6 @@
 package codesharing.controller;
 
+import codesharing.code.Code;
 import codesharing.code.CodeService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -29,13 +30,15 @@ public class TemplateController {
     }
 
     @GetMapping("/code/{id}")
-    public String getCodeInHtml(@PathVariable String id, Model model) {
+    public String getCodeInHtml(@PathVariable Long id, Model model) {
         model.addAttribute("snippet", codeService.getCode(id));
         return "view_snippet";
     }
 
     @GetMapping("/profile")
-    public String getProfile() {
+    public String getProfile(Model model) {
+        Code code = codeService.getCode(1L);
+        model.addAttribute("snippet", code);
         return "profile";
     }
 }

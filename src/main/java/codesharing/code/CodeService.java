@@ -15,7 +15,7 @@ public class CodeService {
         codeRepository.save(newCode);
     }
 
-    public Code getCode(String id) {
+    public Code getCode(Long id) {
         return codeRepository.findCodeById(id);
     }
 }
