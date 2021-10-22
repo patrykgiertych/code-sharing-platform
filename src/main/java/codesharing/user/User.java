@@ -1,5 +1,6 @@
 package codesharing.user;
 
+import codesharing.code.Code;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -11,10 +12,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 
-import java.util.Collection;
-import java.util.Collections;
+import java.util.*;
 
-import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Table(name = "users")
@@ -25,15 +24,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 public class User implements UserDetails {
 
     @Id
-    @SequenceGenerator(
-            name = "user_sequence",
-            sequenceName = "user_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = SEQUENCE,
-            generator = "user_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
     private String password;
@@ -42,6 +33,14 @@ public class User implements UserDetails {
     @Transient
     private boolean locked;
     private boolean enabled = true;
+
+    @ManyToMany
+    @JoinTable(
+            name = "code_user",
+            joinColumns = @JoinColumn(name = "code_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private Set<Code> codeList = new HashSet<>();
 
 
     public User(String username, String password, UserRole userRole) {

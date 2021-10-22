@@ -1,5 +1,6 @@
 package codesharing.code;
 
+import codesharing.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -7,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.UUID;
 
 import static javax.persistence.GenerationType.SEQUENCE;
@@ -21,26 +23,16 @@ public class Code {
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
     @Id
-    @SequenceGenerator(
-            name = "code_sequence",
-            sequenceName = "code_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = SEQUENCE,
-            generator = "code_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String code;
     private String date;
-//    private boolean isPublic;
-//    private User author;
-//    private List<User> userList;   list of users allowed to see and edit the snippet, will be implemented later
+
+    @ManyToMany(mappedBy = "codeList")
+    private List<User> allowedUsers;
 
     public Code(CodeDto code) {
-
         this.code = code.getCode();
         this.date = LocalDateTime.now().format(formatter);
     }
-
 }
