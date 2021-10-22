@@ -35,10 +35,8 @@ public class TemplateController {
         return "view_snippet";
     }
 
-    @GetMapping("/profile")
-    public String getProfile(Model model) {
-        Code code = codeService.getCode(1L);
-        model.addAttribute("snippet", code);
-        return "profile";
+    @GetMapping("/your_profile")
+    public String getProfile() {
+        return "your_profile";
     }
 }

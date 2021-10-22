@@ -75,4 +75,8 @@ public class User implements UserDetails {
         return Collections.singletonList(authority);
     }
 
+    public void addCode(Code code) {
+        codeList.add(code);
+    }
+
 }
