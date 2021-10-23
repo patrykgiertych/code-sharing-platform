@@ -10,6 +10,8 @@
 <header>
     <h1>Your code snippets</h1>
     <a href="/code/new">Click here to add a new snippet</a>
+    <a th:href="|/user/${username}/code|">Your snippets</a>
+    <h1 th:text="|/user/${username}/code|"></h1>
 </header>
 <article>
 <!--    <h1 th:text="'Logged in as  ' + ${username}"></h1>-->

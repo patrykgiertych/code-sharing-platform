@@ -3,6 +3,7 @@ package codesharing.controller;
 import codesharing.code.Code;
 import codesharing.code.CodeService;
 import codesharing.user.User;
+import codesharing.util.Utility;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class TemplateController {
 
     private final CodeService codeService;
+    private final Utility util;
 
     @GetMapping("/login")
     public String getLoginPage() {
@@ -38,8 +40,8 @@ public class TemplateController {
     }
 
     @GetMapping("/your_profile")
-    public String getProfile(Model model) {       //, @AuthenticationPrincipal User user) {
-//        model.addAttribute("username", user.getUsername());
+    public String getProfile(Model model) {
+        model.addAttribute("username", util.getLoggedUser().getUsername());
         return "your_profile";
     }
 }

@@ -32,4 +32,11 @@ public class UserService implements UserDetailsService {
         userRepository.save(user);
         return "signUpUser works";
     }
+
+    public User getUser(String username) throws UsernameNotFoundException {
+        if (!userRepository.findByUsername(username).isPresent()) {
+            throw new UsernameNotFoundException("User not found");
+        }
+        return userRepository.findByUsername(username).get();
+    }
 }
