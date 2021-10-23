@@ -15,8 +15,8 @@ public class CodeController {
 
     @PostMapping("/api/code/new")
     @ResponseBody
-    public CodeDto addCode(@RequestBody CodeDto code, @AuthenticationPrincipal User user) {
-        codeService.addNewCode(code, user);
+    public CodeDto addCode(@RequestBody CodeDto code) {
+        codeService.addNewCode(code);
         return code;
     }
 
