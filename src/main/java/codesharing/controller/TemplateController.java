@@ -38,8 +38,8 @@ public class TemplateController {
     }
 
     @GetMapping("/your_profile")
-    public String getProfile(Model model, @AuthenticationPrincipal User user) {
-        model.addAttribute("username", user.getUsername());
+    public String getProfile(Model model) {       //, @AuthenticationPrincipal User user) {
+//        model.addAttribute("username", user.getUsername());
         return "your_profile";
     }
 }
