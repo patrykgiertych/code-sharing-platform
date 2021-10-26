@@ -5,8 +5,8 @@
 
 body {
   font-family: sans-serif;
-  background-color: rgb(245, 245, 245);
-  border-top: #1098ad solid 10px;
+  background-color: #12232E;
+  border-top: #007CC7 solid 10px;
 }
 
 .welcome-header {
@@ -15,7 +15,7 @@ body {
 }
 
 .welcome-text {
-  color: #3d3d3d;
+  color: #EEFBFB;
   font-size: 80px;
   margin-top: 40px;
 }
@@ -40,8 +40,8 @@ body {
   border: none;
   cursor: pointer;
   font-size: 40px;
-  color: #3d3d3d;
-  background-color: #1098ad;
+  color: #EEFBFB;
+  background-color: #007CC7;
   padding: 15px;
   border-radius: 10px;
   width: 150px;
@@ -52,10 +52,10 @@ body {
 }
 
 .button:visited {
-  color: #3d3d3d;
+  color: #EEFBFB;
 }
 
 .button:hover {
-  background-color: rgb(245, 245, 245);
-  color: #1098ad;
+  background-color: #EEFBFB;
+  color: #007CC7;
 }
