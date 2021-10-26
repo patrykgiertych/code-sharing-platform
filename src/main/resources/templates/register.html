@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Register</title>
-    <link rel="stylesheet" th:href="@{/css/register.css}" />
-    <script th:src="@{/js/register.js}"></script>
-  </head>
-  <body>
-    <div class="container">
-      <textarea id="username" placeholder="username"></textarea><br />
-      <textarea id="password" placeholder="password"></textarea><br />
-      <form action="/">
-        <button type="submit" onclick="register()">Create new account</button>
-      </form>
-    </div>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <title>Register</title>
+  <link th:href="@{/css/register.css}" rel="stylesheet" />
+  <script th:src="@{/js/register.js}"></script>
+</head>
+<body>
+<header class="welcome-header">
+  <h1>Registration</h1>
+  <h2>Enter username and password to register</h2>
+</header>
+<div class="container">
+  <div class="inputs">
+    <input id="username" placeholder="username"></input><br />
+    <input id="password" placeholder="password"></input><br />
+  </div>
+  <form action="/">
+    <button type="submit" onclick="register()">Create new account</button>
+  </form>
+</div>
+</body>
 </html>
