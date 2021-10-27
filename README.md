@@ -17,3 +17,4 @@ Code Sharing Platform is a RESTful web service allowing users to share their cod
 ```
 After getting a request like this, the app uses a data to object class to create an instance of Code class (date and time of creation and author are handled in the constructor of Code class), and send it to a database.
 
+* `/register` - **GET** - html endpoint where user can enter username and password to create an account. Then the app sends these informations to the `/api/user/new` as Json object
