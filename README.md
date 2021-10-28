@@ -6,7 +6,9 @@ Code Sharing Platform is a RESTful web service allowing users to share their cod
 ## Endpoints
 
 
-* `/api/code/new` - **POST** - endpoint for adding new code, only available if user is logged in. Example of a correct request body:
+* `/api/code/new` - **POST** - endpoint for adding new code, only available if user is logged in. 
+
+ Example of a correct request body:
 
 ```
 {
@@ -16,5 +18,20 @@ Code Sharing Platform is a RESTful web service allowing users to share their cod
 }
 ```
 After getting a request like this, the app uses a data to object class to create an instance of Code class (date and time of creation and author are handled in the constructor of Code class), and send it to a database.
+#
+
+* `/api/code/id` - **GET** - endpoint for viewing a specific code snippet with an id matching the id entered in the url
+
+Example get request with url `/api/code/1` :
+
+
+```
+{
+    "id": 1,
+    "code": "System.out.println(\"Hello World!\");",
+    "date": "2021/10/28 10:36:10"
+}
+```
+#
 
 * `/register` - **GET** - html endpoint where user can enter username and password to create an account. Then the app sends these informations to the `/api/user/new` as Json object
