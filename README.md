@@ -5,6 +5,7 @@ Code Sharing Platform is a RESTful web service allowing users to share their cod
 
 ## Endpoints
 
+* `/` - **GET** - html endpoint  with index.html, where user can login or register.
 
 * `/api/code/new` - **POST** - endpoint for adding new code, only available if user is logged in. 
 
@@ -20,7 +21,7 @@ Code Sharing Platform is a RESTful web service allowing users to share their cod
 After getting a request like this, the app uses a data to object class to create an instance of Code class (date and time of creation and author are handled in the constructor of Code class), and send it to a database.
 #
 
-* `/api/code/id` - **GET** - endpoint for viewing a specific code snippet with an id matching the id entered in the url
+* `/api/code/id` - **GET** - endpoint for viewing a specific code snippet with an id matching the id entered in the url.
 
 Example get request with url `/api/code/1` :
 
@@ -34,4 +35,18 @@ Example get request with url `/api/code/1` :
 ```
 #
 
-* `/register` - **GET** - html endpoint where user can enter username and password to create an account. Then the app sends these informations to the `/api/user/new` as Json object
+* `/register` - **GET** - html endpoint where user can enter username and password to create an account. Then the app sends these informations to the `/api/user/new` as Json object.
+
+#
+
+* `/login` - **GET** - html endpoint with login form, after logging in user is redirected to his profile page.
+
+#
+
+* `/your_profile` - **GET** - html endpoint with currently logged in user profile, has hyperlinks redirecting user to pages where he can add new code, or see all of his code in one place.
+
+#
+
+* `/code/new` - **GET** - html endpoint with a form to add new code and submit it.
+
+
