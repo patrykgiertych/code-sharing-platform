@@ -1,6 +1,7 @@
 package codesharing.code;
 
 import codesharing.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,6 +29,7 @@ public class Code {
     private String code;
     private String date;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "codeList")
     private List<User> allowedUsers;
 

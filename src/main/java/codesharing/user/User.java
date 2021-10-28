@@ -34,6 +34,7 @@ public class User implements UserDetails {
     private boolean locked;
     private boolean enabled = true;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "code_user",
