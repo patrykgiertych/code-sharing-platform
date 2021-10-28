@@ -29,6 +29,7 @@ public class Code {
     private String code;
     private String date;
 
+
     @JsonIgnore
     @ManyToMany(mappedBy = "codeList")
     private List<User> allowedUsers;
